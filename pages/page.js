@@ -11,10 +11,13 @@ return (
   }
   
   // This gets called on every request
-  export async function getServerSideProps() {
+  export async function getServerSideProps({res}) {
+    res.setHeader('cache-control', 's-maxage=10, stale-while-revalidate')
     return {
       notFound: true,
     }
   }
+
+  
   
   export default Page
